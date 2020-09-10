@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Spring Boot系列 之Spring Boot 注解大全 | Gridea</title>
-<link rel="shortcut icon" href="https://1725735819.github.io/favicon.ico?v=1599652246456">
+<link rel="shortcut icon" href="https://1725735819.github.io/favicon.ico?v=1599737117513">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://1725735819.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="Spring Boot系列 之Spring Boot 注解大全 | Gridea - Atom Feed" href="https://1725735819.github.io/atom.xml">
@@ -22,7 +22,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://1725735819.github.io">
-  <img class="avatar" src="https://1725735819.github.io/images/avatar.png?v=1599652246456" alt="">
+  <img class="avatar" src="https://1725735819.github.io/images/avatar.png?v=1599737117513" alt="">
   </a>
   <h1 class="site-title">
     Gridea
@@ -188,8 +188,8 @@ private DemoInfoService demoInfoService;
 @Transient：表示该属性并非一个到数据库表的字段的映射,ORM框架将忽略该属性。如果一个属性并非数据库表的字段映射,就务必将其标示为@Transient,否则,ORM框架默认其注解为@Basic。@Basic(fetch=FetchType.LAZY)：标记可以指定实体属性的加载方式<br>
 @JsonIgnore：作用是json序列化时将Java bean中的一些属性忽略掉,序列化和反序列化都受影响。<br>
 @JoinColumn（name=”loginId”）:一对一：本表中指向另一个表的外键。一对多：另一个表指向本表的外键。<br>
-@OneToOne、@OneToMany、@ManyToOne：对应hibernate配置文件中的一对一，一对多，多对一。<br>
-四、springMVC相关注解</p>
+@OneToOne、@OneToMany、@ManyToOne：对应hibernate配置文件中的一对一，一对多，多对一。</p>
+<p>四、springMVC相关注解</p>
 <p>@RequestMapping：@RequestMapping(“/path”)表示该控制器处理所有“/path”的UR L请求。RequestMapping是一个用来处理请求地址映射的注解，可用于类或方法上。<br>
 用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。该注解有六个属性：<br>
 params:指定request中必须包含某些参数值是，才让该方法处理。<br>

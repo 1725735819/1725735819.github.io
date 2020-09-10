@@ -1,0 +1,244 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spring Boot系列之自动配置 原理 | Gridea</title>
+<link rel="shortcut icon" href="https://1725735819.github.io/favicon.ico?v=1599737117513">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://1725735819.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Spring Boot系列之自动配置 原理 | Gridea - Atom Feed" href="https://1725735819.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="不论在工作中，亦或是求职面试，Spring Boot已经成为我们必知必会的技能项。除了某些老旧的政府项目或金融项目持有观望态度外，如今的各行各业都在飞速的拥抱这个已经不是很新的Spring启动框架。
+Spring Boot的配置文件
+初识S..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://1725735819.github.io">
+  <img class="avatar" src="https://1725735819.github.io/images/avatar.png?v=1599737117513" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Spring Boot系列之自动配置 原理
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-09-10
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>不论在工作中，亦或是求职面试，Spring Boot已经成为我们必知必会的技能项。除了某些老旧的政府项目或金融项目持有观望态度外，如今的各行各业都在飞速的拥抱这个已经不是很新的Spring启动框架。</p>
+<p>Spring Boot的配置文件<br>
+初识Spring Boot时我们就知道，Spring Boot有一个全局配置文件：application.properties或application.yml。<br>
+官方文档：</p>
+<pre><code>https://docs.spring.io/spring-boot/docs/2.1.0.RELEASE/reference/htmlsingle/#common-application-properties
+</code></pre>
+<p>1、自动配置原理：</p>
+<p>1）SpringBoot启动的时候加载主配置类，开启了自动配置功能@EnableAutoConfiguration<br>
+2）@EnableAutoConfiguration 作用：<br>
+利用EnableAutoConfigurationImportSelector给容器中导入一些组件<br>
+可以查看selectImports()方法的内容；<br>
+List configurations = getCandidateConfigurations(annotationMetadata, attributes);<br>
+获取候选的配置</p>
+<pre><code>SpringFactoriesLoader.loadFactoryNames()
+扫描所有jar包类路径下 META‐INF/spring.factories
+把扫描到的这些文件的内容包装成properties对象
+从properties中获取到EnableAutoConfiguration.class类（类名）对应的值，然后把他们添加在容器中
+</code></pre>
+<p>3）、每一个自动配置类进行自动配置功能；<br>
+4）、以HttpEncodingAutoConfiguration（Http编码自动配置）为例解释自动配置原理；</p>
+<pre><code>@Configuration //表示这是一个配置类，以前编写的配置文件一样，也可以给容器中添加组件
+@EnableConfigurationProperties(HttpEncodingProperties.class) //启动指定类的
+ConfigurationProperties功能；将配置文件中对应的值和HttpEncodingProperties绑定起来；并把
+HttpEncodingProperties加入到ioc容器中
+@ConditionalOnWebApplication //Spring底层@Conditional注解（Spring注解版），根据不同的条件，如果
+满足指定的条件，整个配置类里面的配置就会生效； 判断当前应用是否是web应用，如果是，当前配置类生效
+@ConditionalOnClass(CharacterEncodingFilter.class) //判断当前项目有没有这个类
+CharacterEncodingFilter；SpringMVC中进行乱码解决的过滤器；
+@ConditionalOnProperty(prefix = &quot;spring.http.encoding&quot;, value = &quot;enabled&quot;, matchIfMissing =
+true) //判断配置文件中是否存在某个配置 spring.http.encoding.enabled；如果不存在，判断也是成立的
+//即使我们配置文件中不配置pring.http.encoding.enabled=true，也是默认生效的；
+public class HttpEncodingAutoConfiguration {
+    //他已经和SpringBoot的配置文件映射了
+    private final HttpEncodingProperties properties;
+//只有一个有参构造器的情况下，参数的值就会从容器中拿
+public HttpEncodingAutoConfiguration(HttpEncodingProperties properties) {
+    this.properties = properties;
+}
+@Bean //给容器中添加一个组件，这个组件的某些值需要从properties中获取
+@ConditionalOnMissingBean(CharacterEncodingFilter.class) //判断容器没有这个组件？
+public CharacterEncodingFilter characterEncodingFilter() {
+    CharacterEncodingFilter filter = new OrderedCharacterEncodingFilter();
+    filter.setEncoding(this.properties.getCharset().name());
+    filter.setForceRequestEncoding(this.properties.shouldForce(Type.REQUEST));
+    filter.setForceResponseEncoding(this.properties.shouldForce(Type.RESPONSE));
+    return filter;
+}
+</code></pre>
+<p>一但这个配置类生效；这个配置类就会给容器中添加各种组件；这些组件的属性是从对应的properties类中获取的，这些类里面的每一个属性又是和配置文件绑定的；<br>
+5）、所有在配置文件中能配置的属性都是在xxxxProperties类中封装者‘；配置文件能配置什么就可以参照某个功能对应的这个属性类</p>
+<p>2、细节</p>
+<p>2.1@Conditional派生注解（Spring注解版原生的@Conditional作用）<br>
+作用：必须是@Conditional指定的条件成立，才给容器中添加组件，配置配里面的所有内容才生效</p>
+<figure data-type="image" tabindex="1"><img src="https://1725735819.github.io/post-images/1599737061519.jpg" alt="" loading="lazy"></figure>
+<p>自动配置类必须在一定的条件下才能生效；</p>
+<p>我们怎么知道哪些自动配置类生效； 我们可以通过启用 debug=true属性；来让控制台打印自动配置报告，这样我们就可以很方便的知道哪些自动配置 类生效；</p>
+<pre><code>=========================
+AUTO‐CONFIGURATION REPORT
+=========================
+Positive matches:（自动配置类启用的）
+‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+DispatcherServletAutoConfiguration matched:
+	‐ @ConditionalOnClass found required class
+'org.springframework.web.servlet.DispatcherServlet'; @ConditionalOnMissingClass did not find
+unwanted class (OnClassCondition)
+‐ @ConditionalOnWebApplication (required) found StandardServletEnvironment
+(OnWebApplicationCondition)
+Negative matches:（没有启动，没有匹配成功的自动配置类）
+‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐‐
+ActiveMQAutoConfiguration:
+Did not match:
+‐ @ConditionalOnClass did not find required classes 'javax.jms.ConnectionFactory',
+'org.apache.activemq.ActiveMQConnectionFactory' (OnClassCondition)
+AopAutoConfiguration:
+Did not match:
+‐ @ConditionalOnClass did not find required classes
+'org.aspectj.lang.annotation.Aspect', 'org.aspectj.lang.reflect.Advice' (OnClassCondition)
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://1725735819.github.io/post/spring-boot-xi-lie-zhi-spring-boot-zhu-jie-da-quan/">
+              <h3 class="post-title">
+                Spring Boot系列 之Spring Boot 注解大全
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://1725735819.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
