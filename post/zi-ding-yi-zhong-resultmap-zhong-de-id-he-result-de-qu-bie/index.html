@@ -2,19 +2,17 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>idea项目打开后，java文件有红色j，pom.xml变为普通的xml文件 | Gridea</title>
+<title>自定义中 ResultMap中的 id 和result的区别 | Gridea</title>
 <link rel="shortcut icon" href="https://1725735819.github.io/favicon.ico?v=1600085406000">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://1725735819.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="idea项目打开后，java文件有红色j，pom.xml变为普通的xml文件 | Gridea - Atom Feed" href="https://1725735819.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="自定义中 ResultMap中的 id 和result的区别 | Gridea - Atom Feed" href="https://1725735819.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="1..java文件的结局方案
-打开project Structure
-选Modoles选sources将右边Add Content Root中内容全部移除
-点击Add Content Root重新添加sources，j文件即可变成java文..." />
+    <meta name="description" content="    &lt;id column=&quot;id&quot; property=&quot;id&quot; /&gt;
+    &lt;result column=&quot;order_id&quot; property=&quot..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -77,27 +75,35 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              idea项目打开后，java文件有红色j，pom.xml变为普通的xml文件
+              自定义中 ResultMap中的 id 和result的区别
             </h2>
             <div class="post-info">
               <span>
-                2020-09-08
+                2020-09-14
               </span>
               <span>
-                1 min read
+                2 min read
               </span>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>1..java文件的结局方案</p>
-<p>打开project Structure</p>
-<p>选Modoles选sources将右边Add Content Root中内容全部移除</p>
-<p>点击Add Content Root重新添加sources，j文件即可变成java文件</p>
-<p>2.pom.xml文件的解决方案</p>
-<p>idea没有识别出来mavn中的pom.xml文件,不能自动下载依赖包,</p>
-<p>解决办：是选中pom.xml文件,右键&quot; add as maven project&quot;就可以了</p>
+                <pre><code class="language-&lt;resultMap">    &lt;id column=&quot;id&quot; property=&quot;id&quot; /&gt;
+    &lt;result column=&quot;order_id&quot; property=&quot;orderId&quot; /&gt;
+    &lt;result column=&quot;customer_register_id&quot; property=&quot;customerRegisterId&quot; /&gt;
+    &lt;result column=&quot;entity_id&quot; property=&quot;entityId&quot; /&gt;
+    &lt;result column=&quot;invoice_kind&quot; property=&quot;invoiceKind&quot; /&gt;
+&lt;/resultMap&gt;
+</code></pre>
+<p>在自定义的resultMap中第一列通常是主键id，那么id 和result有什么区别呢？</p>
+<p>id和result都是映射单列值到一个属性或字段的简单数据类型。</p>
+<p>唯一不同是。id是作为唯一标识的，当和其他对象实例对比的时候，这个id很有用，尤其是应用到缓存和内嵌的结果映射。</p>
+<p>property： 映射数据库列的字段或属性，如果JavaBean的属性与给定的名称匹配，就会使用匹配的名字,否则MyBatis将搜索给定名称的字段，两种情况下你都可以使用逗点的属性形式，比如，你可以映射到“”username：，也可以映射到“address.street.number”</p>
+<p>column:数据库的列名或者列标签别名，与传递个resultSet.getString(columnName)的参数名称相同。</p>
+<p>javaType:完整java类名或者别名，如果映射到一个JavaBean，那么MyBatis通常会自行监测到。然而如果映射到一个HashMap，那应该明确指定javaType来确保所需行为。</p>
+<p>jdbcType;支持的jdbc类型，这个属性只在insert，update，delete的时候针对允许空的列有用，JDBC需要这项，但Mybatis不需要，如果直接编写JDBC代码，在允许为空值的情况下需要指定这个类型。</p>
+<figure data-type="image" tabindex="1"><img src="https://1725735819.github.io/post-images/1600085396626.jpg" alt="" loading="lazy"></figure>
 
               </div>
               <div class="toc-container">
@@ -110,9 +116,9 @@
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://1725735819.github.io/post/hello-gridea/">
+            <a href="https://1725735819.github.io/post/spring-boot-xi-lie-zhi-spring-kuang-jia/">
               <h3 class="post-title">
-                Hello Gridea
+                SPring Boot系列之spring框架
               </h3>
             </a>
           </div>

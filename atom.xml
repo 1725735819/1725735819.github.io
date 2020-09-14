@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://1725735819.github.io</id>
     <title>Gridea</title>
-    <updated>2020-09-11T12:16:00.808Z</updated>
+    <updated>2020-09-14T12:10:09.236Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://1725735819.github.io"/>
     <link rel="self" href="https://1725735819.github.io/atom.xml"/>
@@ -10,6 +10,29 @@
     <logo>https://1725735819.github.io/images/avatar.png</logo>
     <icon>https://1725735819.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[自定义中 ResultMap中的 id 和result的区别]]></title>
+        <id>https://1725735819.github.io/post/zi-ding-yi-zhong-resultmap-zhong-de-id-he-result-de-qu-bie/</id>
+        <link href="https://1725735819.github.io/post/zi-ding-yi-zhong-resultmap-zhong-de-id-he-result-de-qu-bie/">
+        </link>
+        <updated>2020-09-14T12:07:56.000Z</updated>
+        <content type="html"><![CDATA[<pre><code class="language-&lt;resultMap">    &lt;id column=&quot;id&quot; property=&quot;id&quot; /&gt;
+    &lt;result column=&quot;order_id&quot; property=&quot;orderId&quot; /&gt;
+    &lt;result column=&quot;customer_register_id&quot; property=&quot;customerRegisterId&quot; /&gt;
+    &lt;result column=&quot;entity_id&quot; property=&quot;entityId&quot; /&gt;
+    &lt;result column=&quot;invoice_kind&quot; property=&quot;invoiceKind&quot; /&gt;
+&lt;/resultMap&gt;
+</code></pre>
+<p>在自定义的resultMap中第一列通常是主键id，那么id 和result有什么区别呢？</p>
+<p>id和result都是映射单列值到一个属性或字段的简单数据类型。</p>
+<p>唯一不同是。id是作为唯一标识的，当和其他对象实例对比的时候，这个id很有用，尤其是应用到缓存和内嵌的结果映射。</p>
+<p>property： 映射数据库列的字段或属性，如果JavaBean的属性与给定的名称匹配，就会使用匹配的名字,否则MyBatis将搜索给定名称的字段，两种情况下你都可以使用逗点的属性形式，比如，你可以映射到“”username：，也可以映射到“address.street.number”</p>
+<p>column:数据库的列名或者列标签别名，与传递个resultSet.getString(columnName)的参数名称相同。</p>
+<p>javaType:完整java类名或者别名，如果映射到一个JavaBean，那么MyBatis通常会自行监测到。然而如果映射到一个HashMap，那应该明确指定javaType来确保所需行为。</p>
+<p>jdbcType;支持的jdbc类型，这个属性只在insert，update，delete的时候针对允许空的列有用，JDBC需要这项，但Mybatis不需要，如果直接编写JDBC代码，在允许为空值的情况下需要指定这个类型。</p>
+<figure data-type="image" tabindex="1"><img src="https://1725735819.github.io/post-images/1600085396626.jpg" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[SPring Boot系列之spring框架]]></title>
         <id>https://1725735819.github.io/post/spring-boot-xi-lie-zhi-spring-kuang-jia/</id>
