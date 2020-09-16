@@ -2,19 +2,18 @@
   <head>
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>idea项目打开后，java文件有红色j，pom.xml变为普通的xml文件 | Gridea</title>
+<title>SpringBoot系列之快速入门 | Gridea</title>
 <link rel="shortcut icon" href="https://1725735819.github.io/favicon.ico?v=1600254880120">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://1725735819.github.io/styles/main.css">
-<link rel="alternate" type="application/atom+xml" title="idea项目打开后，java文件有红色j，pom.xml变为普通的xml文件 | Gridea - Atom Feed" href="https://1725735819.github.io/atom.xml">
+<link rel="alternate" type="application/atom+xml" title="SpringBoot系列之快速入门 | Gridea - Atom Feed" href="https://1725735819.github.io/atom.xml">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-    <meta name="description" content="1..java文件的结局方案
-打开project Structure
-选Modoles选sources将右边Add Content Root中内容全部移除
-点击Add Content Root重新添加sources，j文件即可变成java文..." />
+    <meta name="description" content="简介
+Spring Boot已成为当今最流行的微服务开发框架，本文是如何使用Spring Boot快速开始Web微服务开发的指南，我们将使创建一个可运行的包含内嵌Web容器（默认使用的是Tomcat）的可运行Jar包。
+传统的Spring应..." />
     <meta name="keywords" content="" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -77,27 +76,42 @@
         <div class="post-detail">
           <article class="post">
             <h2 class="post-title">
-              idea项目打开后，java文件有红色j，pom.xml变为普通的xml文件
+              SpringBoot系列之快速入门
             </h2>
             <div class="post-info">
               <span>
-                2020-09-08
+                2020-09-16
               </span>
               <span>
-                1 min read
+                2 min read
               </span>
               
             </div>
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <p>1..java文件的结局方案</p>
-<p>打开project Structure</p>
-<p>选Modoles选sources将右边Add Content Root中内容全部移除</p>
-<p>点击Add Content Root重新添加sources，j文件即可变成java文件</p>
-<p>2.pom.xml文件的解决方案</p>
-<p>idea没有识别出来mavn中的pom.xml文件,不能自动下载依赖包,</p>
-<p>解决办：是选中pom.xml文件,右键&quot; add as maven project&quot;就可以了</p>
+                <p>简介<br>
+Spring Boot已成为当今最流行的微服务开发框架，本文是如何使用Spring Boot快速开始Web微服务开发的指南，我们将使创建一个可运行的包含内嵌Web容器（默认使用的是Tomcat）的可运行Jar包。<br>
+传统的Spring应用程序需要配置大量的XML文件才能运行，而使用Spring Boot只需极少的配置，就可以快速获得一个正常运行的Spring应用程序，而这些配置使用的都是注解的形式，不需要再配置XML。</p>
+<p>SpringBoot主要优点：<br>
+1、快速构建项目。<br>
+2、对主流开发框架的无配置集成。<br>
+3、项目可独立运行，无须外部依赖Servlet容器。<br>
+4、提供一系列企业级项目的功能性特性（比如：安全、健康检测、外部化配置、数据库访问、restful搭建等）。<br>
+5、提高了开发、部署效率。</p>
+<p>maven构建项目</p>
+<p>1、访问http://start.spring.io/<br>
+2、选择构建工具Maven Project、Spring Boot版本1.3.6以及一些工程基本信息<br>
+3、点击Generate Project下载项目压缩包<br>
+4、解压后，使用eclipse，Import -&gt; Existing Maven Projects -&gt; Next -&gt;选择解压后的文件夹-&gt; Finsh，OK done!</p>
+<p>Spring Boot的基础结构共三个文件:<br>
+src/main/java  程序开发以及主程序入口<br>
+src/main/resources 配置文件<br>
+src/test/java  测试程序</p>
+<p>1、Application.java 建议放到跟目录下面,主要用于做一些框架配置<br>
+2、domain目录主要用于实体（Entity）与数据访问层（Repository）<br>
+3、service 层主要是业务类代码<br>
+4、controller 负责页面访问控制</p>
 
               </div>
               <div class="toc-container">
@@ -110,9 +124,9 @@
         
           <div class="next-post">
             <div class="next">下一篇</div>
-            <a href="https://1725735819.github.io/post/hello-gridea/">
+            <a href="https://1725735819.github.io/post/zi-ding-yi-zhong-resultmap-zhong-de-id-he-result-de-qu-bie/">
               <h3 class="post-title">
-                Hello Gridea
+                自定义中 ResultMap中的 id 和result的区别
               </h3>
             </a>
           </div>

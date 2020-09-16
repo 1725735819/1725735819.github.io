@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://1725735819.github.io</id>
     <title>Gridea</title>
-    <updated>2020-09-14T12:10:09.236Z</updated>
+    <updated>2020-09-16T11:14:42.691Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://1725735819.github.io"/>
     <link rel="self" href="https://1725735819.github.io/atom.xml"/>
@@ -10,6 +10,36 @@
     <logo>https://1725735819.github.io/images/avatar.png</logo>
     <icon>https://1725735819.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[SpringBoot系列之快速入门]]></title>
+        <id>https://1725735819.github.io/post/springboot-xi-lie-zhi-kuai-su-ru-men/</id>
+        <link href="https://1725735819.github.io/post/springboot-xi-lie-zhi-kuai-su-ru-men/">
+        </link>
+        <updated>2020-09-16T11:10:58.000Z</updated>
+        <content type="html"><![CDATA[<p>简介<br>
+Spring Boot已成为当今最流行的微服务开发框架，本文是如何使用Spring Boot快速开始Web微服务开发的指南，我们将使创建一个可运行的包含内嵌Web容器（默认使用的是Tomcat）的可运行Jar包。<br>
+传统的Spring应用程序需要配置大量的XML文件才能运行，而使用Spring Boot只需极少的配置，就可以快速获得一个正常运行的Spring应用程序，而这些配置使用的都是注解的形式，不需要再配置XML。</p>
+<p>SpringBoot主要优点：<br>
+1、快速构建项目。<br>
+2、对主流开发框架的无配置集成。<br>
+3、项目可独立运行，无须外部依赖Servlet容器。<br>
+4、提供一系列企业级项目的功能性特性（比如：安全、健康检测、外部化配置、数据库访问、restful搭建等）。<br>
+5、提高了开发、部署效率。</p>
+<p>maven构建项目</p>
+<p>1、访问http://start.spring.io/<br>
+2、选择构建工具Maven Project、Spring Boot版本1.3.6以及一些工程基本信息<br>
+3、点击Generate Project下载项目压缩包<br>
+4、解压后，使用eclipse，Import -&gt; Existing Maven Projects -&gt; Next -&gt;选择解压后的文件夹-&gt; Finsh，OK done!</p>
+<p>Spring Boot的基础结构共三个文件:<br>
+src/main/java  程序开发以及主程序入口<br>
+src/main/resources 配置文件<br>
+src/test/java  测试程序</p>
+<p>1、Application.java 建议放到跟目录下面,主要用于做一些框架配置<br>
+2、domain目录主要用于实体（Entity）与数据访问层（Repository）<br>
+3、service 层主要是业务类代码<br>
+4、controller 负责页面访问控制</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[自定义中 ResultMap中的 id 和result的区别]]></title>
         <id>https://1725735819.github.io/post/zi-ding-yi-zhong-resultmap-zhong-de-id-he-result-de-qu-bie/</id>
