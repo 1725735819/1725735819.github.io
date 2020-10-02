@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://1725735819.github.io</id>
     <title>Gridea</title>
-    <updated>2020-09-21T11:21:40.869Z</updated>
+    <updated>2020-10-02T01:19:33.603Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://1725735819.github.io"/>
     <link rel="self" href="https://1725735819.github.io/atom.xml"/>
@@ -10,6 +10,57 @@
     <logo>https://1725735819.github.io/images/avatar.png</logo>
     <icon>https://1725735819.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[SpringBoot系列之IDEA2020.2.1破解]]></title>
+        <id>https://1725735819.github.io/post/springboot-xi-lie-zhi-idea202021-po-jie/</id>
+        <link href="https://1725735819.github.io/post/springboot-xi-lie-zhi-idea202021-po-jie/">
+        </link>
+        <updated>2020-10-02T00:58:57.000Z</updated>
+        <content type="html"><![CDATA[<p>破解成功可激活到2089<br>
+注意事项：<br>
+1、不需要重新下载应用；<br>
+2、本激活方法适用于2020、2019、2018全系列版本；<br>
+3、如果软件目前已过试用期且无法输入激活码（即激活码框不能输入），请卸载软件重新安装后再激活；</p>
+<p>第一步: 下载最新的 IDEA 2020.2.1 版本安装包</p>
+<p>我们先从 IDEA 官网下载 IDEA 2020.2.1 版本的安装包，下载链接如下：<br>
+https://www.jetbrains.com/idea/download/<br>
+<img src="https://1725735819.github.io/post-images/1601600534674.jpg" alt="" loading="lazy"></p>
+<p>第二步: 先卸载老版本的 IDEA<br>
+注意，如果电脑上之前有安装老版本的 IDEA, 需要先卸载干净，否则可能安装失败！</p>
+<p>注意，一定要先卸载干净掉老版本的 IDEA。<img src="https://1725735819.github.io/post-images/1601600648630.jpg" alt="" loading="lazy"></p>
+<p>卸载成功后，点击关闭<br>
+<img src="https://1725735819.github.io/post-images/1601600755491.jpg" alt="" loading="lazy"></p>
+<p>卸载成功后，双击刚刚下载好的 idea exe 格式安装包, 打开它；<br>
+第三步: 开始激活 IDEA 2020.2.1 版本<br>
+2.安装目录默认为 C:\Program Files\JetBrains\IntelliJ IDEA 2020.2.1, 这里笔者选择的是默认路径:<br>
+<img src="https://1725735819.github.io/post-images/1601600854129.jpg" alt="" loading="lazy"><br>
+3.勾选自己想要创建的桌面快捷方式，笔者的操作系统是 64 位的，所以勾选的 64 位快捷方式：<br>
+<img src="https://1725735819.github.io/post-images/1601600918665.jpg" alt="" loading="lazy"><br>
+4.点击 Install：<br>
+<img src="https://1725735819.github.io/post-images/1601601050603.jpg" alt="" loading="lazy"><br>
+5.安装完成后，勾选 Run IntelliJ IDEA，点击 Finish 运行软件:<br>
+<img src="https://1725735819.github.io/post-images/1601601106253.jpg" alt="" loading="lazy"><br>
+6.等待 IDEA 2020.2.1 运行, 中间会先弹出一个注册框，我们勾选 Evaluate for free, 点击 Evaluate， 先试用30天:<br>
+<img src="https://1725735819.github.io/post-images/1601601190943.jpg" alt="" loading="lazy"><br>
+7.进入 IDEA 中， 我们先随便建个 Java 工程， 然后将网盘中最新的 IDEA 破解补丁 jetbrains-agent-latest.zip拖入 IDEA 界面中，如下图所示：<br>
+<img src="https://1725735819.github.io/post-images/1601601241269.jpg" alt="" loading="lazy"></p>
+<p>补丁下载连接<br>
+链接：https://pan.baidu.com/s/1IBz3nzSBtC55p99NGRJX7w<br>
+提取码：a0ur</p>
+<p>8.拖入补丁后会弹框，点击 restart 重启 IDEA：<br>
+<img src="https://1725735819.github.io/post-images/1601601328003.jpg" alt="" loading="lazy"><br>
+9.配置助手会提示您，需要使用哪种激活方式，这里我们选择默认的 Activation Code，通过安装参数来激活，点击为IDEA安装：<br>
+PS: 安装参数内容同样放置在网盘中了，小伙伴自行拷贝出来即可。<br>
+<img src="https://1725735819.github.io/post-images/1601601387540.jpg" alt="" loading="lazy"><br>
+10.点击是，重启IDEA, 即激活成功啦~<br>
+<img src="https://1725735819.github.io/post-images/1601601421990.jpg" alt="" loading="lazy"><br>
+第四步: 验证 IDEA 是否激活成功<br>
+1.进入 IDEA 界面后，点击 Help -&gt; Register 查看：<br>
+<img src="https://1725735819.github.io/post-images/1601601511675.jpg" alt="" loading="lazy"><br>
+2.可以看到，已经成功激活至 2089 年辣，撸到老，哈哈~<br>
+<img src="https://1725735819.github.io/post-images/1601601564472.jpg" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Spring Boot系列之小操作]]></title>
         <id>https://1725735819.github.io/post/spring-boot-xi-lie-zhi-xiao-cao-zuo/</id>
